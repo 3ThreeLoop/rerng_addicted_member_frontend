@@ -1,0 +1,60 @@
+@import 'tailwindcss';
+@import './fonts.css';
+
+@theme {
+  /* Colors */
+  --color-netflix-red: #e50914;
+  --color-netflix-dark-red: #b20710;
+  --color-netflix-black: #000000;
+  --color-netflix-dark-gray: #221f1f;
+  --color-netflix-gray: #564d4d;
+  --color-netflix-white: #ffffff;
+  --color-netflix-off-white: #f5f5f1;
+
+  /* Gradient color stops (define as colors) */
+  --color-gradient-start: rgba(17, 24, 39, 0.97);
+  --color-gradient-mid: rgba(30, 41, 59, 0.4);
+  --color-gradient-end: rgba(64, 97, 231, 0.2);
+
+  /* Spacing */
+  --spacing-128: 32rem;
+  --spacing-144: 36rem;
+
+  /* Font Families */
+  --font-netflix:
+    'Roboto', 'Open Sans', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial',
+    'sans-serif';
+  --font-netflix-logo: 'Bebas Neue', 'Anton', 'Oswald', 'Impact', 'Arial Black', 'sans-serif';
+  --font-roboto: 'Roboto', 'sans-serif';
+  --font-inter: 'Inter', 'sans-serif';
+  --font-open-sans: 'Open Sans', 'sans-serif';
+  --font-oswald: 'Oswald', 'sans-serif';
+  --font-bebas: 'Bebas Neue', 'sans-serif';
+  --font-anton: 'Anton', 'sans-serif';
+}
+
+body {
+  @apply bg-netflix-black text-white font-netflix;
+}
+
+/* Define gradient as a utility class */
+@layer utilities {
+  .bg-netflix-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(17, 24, 39, 0.97) 0%,
+      rgba(30, 41, 59, 0.4) 60%,
+      rgba(64, 97, 231, 0.2) 100%
+    );
+  }
+
+  /* Alternative: Using CSS variables for flexibility */
+  .bg-netflix-gradient-var {
+    background: linear-gradient(
+      135deg,
+      var(--color-gradient-start) 0%,
+      var(--color-gradient-mid) 60%,
+      var(--color-gradient-end) 100%
+    );
+  }
+}
