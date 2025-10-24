@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 const languageOption = ref([
-    { label: "English-US", flag: "/images/flags/american.png", langCode: "en" },
-    { label: "ភាសាខ្មែរ", flag: "/images/flags/cambodian.png", langCode: "km" },
-    { label: "中文", flag: "/images/flags/chinese.png", langCode: "zh" }
-]);
+  { label: "English-US", flag: "/images/flags/american.png", langCode: "en" },
+  { label: "ភាសាខ្មែរ", flag: "/images/flags/cambodian.png", langCode: "km" },
+  { label: "中文", flag: "/images/flags/chinese.png", langCode: "zh" }
+])
 
-const selectedLang = ref("zh");
-const menuOpen = ref(false);
+const selectedLang = ref(locale.value)
+const menuOpen = ref(false)
 
 const selectLanguage = (langCode: string) => {
-    selectedLang.value = langCode;
-    menuOpen.value = false;
-};
+  selectedLang.value = langCode
+  locale.value = langCode  // ✅ this triggers Vue I18n to change language
+  localStorage.setItem('lang', langCode) // optional: save user choice
+  menuOpen.value = false
+}
 </script>
 
 <template>
