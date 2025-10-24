@@ -4,10 +4,6 @@ import Navbar from '@/components/ui/Navbar.vue';
 
 <template>
     <div class="main-layout w-full h-full">
-        <div>
-            <p>{{ $t('hello') }}</p>
-            <p>{{ $t('welcome') }}</p>
-        </div>
         <navbar />
         <router-view></router-view>
     </div>
