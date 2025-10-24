@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LanguageSelector from '@/components/ui/LanguageSelector.vue';
+import ThemeSelector from './ThemeSelector.vue';
 import router from '@/router';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
@@ -15,6 +16,7 @@ const navbarClass = computed(() => {
         :class="navbarClass">
         <img @click="router.push('/')" src="/images/site/logo.png" alt="site-logo" class="h-full cursor-pointer">
         <div class="nav-bar-setting flex items-center gap-4">
+            <theme-selector />
             <language-selector />
             <v-avatar color="green" size="large">
                 <v-img alt="John" src="/images/avatars/user1.png"></v-img>

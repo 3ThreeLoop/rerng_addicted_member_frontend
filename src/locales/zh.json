@@ -1,4 +1,12 @@
 {
   "hello": "你好！",
-  "welcome": "欢迎来到我们的网站"
+  "welcome": "欢迎来到我们的网站",
+  "theme": {
+    "lightBlue": "浅蓝色",
+    "lightYellow": "浅黄色",
+    "lightPink": "浅粉色",
+    "darkBlue": "深蓝色",
+    "darkYellow": "深黄色",
+    "darkPink": "深粉色"
+  }
 }
