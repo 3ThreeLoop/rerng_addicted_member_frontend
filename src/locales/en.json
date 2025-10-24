@@ -1,4 +1,12 @@
 {
   "hello": "Hello!",
-  "welcome": "Welcome to our website"
+  "welcome": "Welcome to our website",
+  "theme": {
+    "lightBlue": "Light Blue",
+    "lightYellow": "Light Yellow",
+    "lightPink": "Light Pink",
+    "darkBlue": "Dark Blue",
+    "darkYellow": "Dark Yellow",
+    "darkPink": "Dark Pink"
+  }
 }
