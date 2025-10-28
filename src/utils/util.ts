@@ -1,0 +1,106 @@
+import { toast } from 'vuetify-sonner';
+
+export const sonnerToast = (
+  title: string = '', 
+  message: string, 
+  type: "success" | "error" | "info" | "warning" | 'expired' | 'login' | 'logout' | 'notify',
+) => {
+  let color = '';
+  let icon = '';
+  let textColor = ''
+
+  switch (type) {
+    case "success":
+      color = '#3CB371'; 
+      icon = 'mdi-check-circle';
+      textColor = '!text-white'; 
+      break;
+    case "error":
+      color = '#D32F2F'; 
+      icon = 'mdi-cancel';
+      textColor = '!text-white'; 
+      break;
+    case "info":
+      color = '#1E88E5';
+      icon = 'mdi-information';
+      textColor = '!text-white'; 
+      break;
+    case "warning":
+      color = '#FFC107'; 
+      icon = 'mdi-alert-circle';
+      textColor = '!text-white'; 
+      break;
+    case "expired":
+      color = '#FFA500'; 
+      icon = 'mdi-timer-sand'; 
+      textColor = '!text-white'; 
+      break;
+    case "login":
+      color = '#4CAF50'; 
+      icon = 'mdi-login'; 
+      textColor = '!text-white'; 
+      break;
+    case "logout":
+      color = '#FF4C4C'; 
+      icon = 'mdi-logout'; 
+      textColor = '!text-white'; 
+      break;
+    case "notify":
+      color = '#6C63FF'; 
+      icon = 'mdi-message-text'; 
+      textColor = '!text-white'; 
+      break;
+    default:
+      color = '#FFFF';
+      icon = 'mdi-note-check';
+      textColor = '!text-white'; 
+  }
+
+  if (type==='notify') {
+    const soundFile = '/sounds/notify2.mp3'; // Default sound if type not mapped
+
+    // Play alert sound
+    const playSound = (url: string) => {
+      const audio = new Audio(url);
+      audio.play().catch((error) => console.error('Error playing sound:', error));
+    };
+    playSound(soundFile);
+  }
+
+  const toastClass = `text-xs rounded-lg text-blue-500 shadow-lg md:w-[350px] ${textColor} md:!text-xs`;
+  // const textSize = 'text-2xl'
+  if (title !== '') {
+    toast(title, {
+      description: message,
+      cardProps: { color: color, class: toastClass },
+      prependIcon: '',
+      action: {
+        label: '',  // Label for the close button
+        onClick: () => toast.dismiss(),
+        buttonProps: {
+          icon: true, // This makes the action button an icon button
+          class: 'mdi mdi-close', // Close icon, using Vuetify's close icon (mdi-close)
+        },  // Dismiss the toast when clicked
+      },
+      avatarProps: {
+        rounded: false,
+        size: 48
+      },
+      avatar: `/images/notify.webp`, 
+    });
+  } else {
+    // Show toast with only the message
+    toast(message, {
+      cardProps: { color: color, class: toastClass },  
+      prependIcon: icon,
+      action: {
+        label: '',  // Label for the close button
+        onClick: () => toast.dismiss(),
+        buttonProps: {
+          icon: true, // This makes the action button an icon button
+          class: 'mdi mdi-close', // Close icon, using Vuetify's close icon (mdi-close)
+        },  // Dismiss the toast when clicked
+      },
+    });
+  }
+};
